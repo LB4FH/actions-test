@@ -1,6 +1,25 @@
 name: Share data between jobs
 on: push
 jobs:
+  job_0:
+    name: Build
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        dotnet-version: ['6.x' ]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+      - name: Restore it
+        run: dotnet restore
+      - name: Build
+        run: dotnet build .\actions-test.csproj --configuration Release --no-restore
+      - name: Run it
+        run: dotnet run
+
   job_1:
     name: Upload File
     runs-on: ubuntu-latest
