@@ -19,6 +19,8 @@ jobs:
         run: dotnet build --configuration Release --no-restore
       - name: Run it
         run: dotnet run
+      - name: Echo secret
+        run: echo ${{ secrets.TEST_SECRET }}
 
   job_1:
     name: Upload File
