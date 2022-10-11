@@ -16,7 +16,7 @@ jobs:
       - name: Restore it
         run: dotnet restore
       - name: Build
-        run: dotnet build .\actions-test.csproj --configuration Release --no-restore
+        run: dotnet build --configuration Release --no-restore
       - name: Run it
         run: dotnet run
 
