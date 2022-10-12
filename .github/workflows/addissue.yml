@@ -18,4 +18,4 @@ jobs:
       with:
         github-token: ${{secrets.GITHUB_TOKEN}}
         script: |
-            github.projects.createCard({column_name: "Bugs", content_id: context.payload.issue.id, content_type: "Issue" });
+            github.projects.createCard({column_id: 0, content_id: context.payload.issue.id, content_type: "Issue" });
